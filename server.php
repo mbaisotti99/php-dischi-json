@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+$_SESSION["popup"] = true;
 
 $discArr = file_get_contents("./dischi.json");
 $decodedArr = json_decode($discArr, true);

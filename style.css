@@ -38,3 +38,24 @@ form .row .col-6{
     justify-content: center;
     align-items: center;
 }
+
+.alert{
+    align-items: center !important;
+    width: 500px !important;
+    flex-basis: auto;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.alert p {
+    margin: 0 !important;
+}
+
+.alert button {
+    justify-self: flex-end;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}

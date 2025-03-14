@@ -1,7 +1,9 @@
 <?php
-
+session_start();
+$popup = $_SESSION["popup"];
 $discArr = file_get_contents("./dischi.json");
 $decodedArr = json_decode($discArr, true);
+var_dump($popup)
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,13 +23,31 @@ $decodedArr = json_decode($discArr, true);
     </header>
     <div class="container">
         <h1 class="text-center my-5">I tuoi Dischi </h1>
+
+        <?php 
+        if ($popup){
+        ?>
+        <div id="popup" class="alert alert-success my-3 <?= $popup ? "d-flex" : "d-none" ?> items-center">
+            <p class="w-50">
+                Disco aggiunto con successo
+            </p>
+            <button class="btn btn-primary" id="closePopup">
+                <a href="closePopup.php">
+                    Ok
+                </a>
+            </button>
+        </div>
+
+        <?php 
+        }
+        ?>
         <div class="row">
             <?php
             foreach ($decodedArr as $disc) {
                 ?>
                 <div class="col-4 my-5">
                     <div class="card text-center">
-                        <img src=<?php echo $disc["url_copertina"] ?> class="card-img-top" alt="...">
+                        <img src="<?php echo $disc["url_copertina"] ?>" class="card-img-top" alt="<?php echo $disc["titolo"] ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $disc["titolo"] ?></h5>
                             <p class="card-text"><?php echo $disc["artista"] ?></p>
